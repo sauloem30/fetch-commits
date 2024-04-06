@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Octokit } from '@octokit/rest';
 import TextInput from "./components/input"; // Import Octokit
 
@@ -11,27 +11,6 @@ const App: React.FC = () => {
     const [branchName, setBranchName] = useState<string>("master");
     const [error, setError] = useState<string>("");
 
-    // useEffect(() => {
-    //     // Initialize Octokit with your personal access token
-    //     const octokit = new Octokit({
-    //         auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN, // Replace with your token
-    //     });
-    //
-    //     // Fetch commit history from your repository
-    //     octokit.rest.repos
-    //         .listCommits({
-    //             owner: ownerName,
-    //             repo: repoName,
-    //             branch: 'dependabot/npm_and_yarn/json5-1.0.2'
-    //         })
-    //         .then(({ data }) => {
-    //             const commitMessages = data.map((commit: any) => commit.commit.message);
-    //             setCommits(commitMessages);
-    //         })
-    //         .catch((error) => {
-    //             setError(error.message)
-    //             console.error('Error fetching commits:', error)});
-    // }, []);
     const handleSubmit = async (e :any) => {
         e.preventDefault();
         const octokit = new Octokit({
